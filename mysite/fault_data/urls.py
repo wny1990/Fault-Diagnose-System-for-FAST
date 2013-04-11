@@ -8,6 +8,7 @@ from django.contrib import databrowse
 from fault_data.models import FaultMode 
 
 databrowse.site.register(FaultMode)
+
 urlpatterns = patterns('',
 	(r'^databrowse/(.*)', databrowse.site.root),
 	url(r'^$', views.databrose, name='databrose'),
@@ -15,6 +16,7 @@ urlpatterns = patterns('',
 	url(r'^search/$', views.search),
 	url(r'^(?P<mode_id>\d+)/$', views.detail, name='detail'),
 	url(r'^diagnose/$', views.diagnose, name='diagnose'),
+	url(r'^diagnose/(?P<mode_id>\d+)/$', views.dgdetail, name='dgdetail'),
 #    url(r'^(?P<poll_id>\d+)/results/$', views.results, name='results'),
 #    url(r'^(?P<poll_id>\d+)/vote/$', views.vote, name='vote'),
 )

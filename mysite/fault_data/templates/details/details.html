@@ -1,33 +1,9 @@
-<head>
-	<link rel = "stylesheet" type = "text/css" href = "/media/css/main.css">
-</head>
+{% extends "frame.html" %}
 
-<body bgcolor=#092e20>  
-
-
-<div id="container">
-
-<div id="header">
-<h1>Web Based Fault Diagnose System</h1>
-</div>
-
-<div id="menu">
-<img src="/media/fast1.png" width="200" height="125">
-<h2>Menu</h2>
-<ul>
-<li><a href="/">HomePage</a></li>	
-<li><a href="/fault_data/">Brose the Database</a></li>
-<li><a href="/fault_data/diagnose/">Fault Diagnose</a></li>
-<li>PAGE2</li>
-<li>PAGE3</li>
-</ul>
-</div>
-
-<div id="content">
+{% block content %}
 <h2>Data Details:</h2>
 
- {% for p in FaultMode_list %}
-       {% if FaultModeID = p.FaultModeID %}
+ {% for p in ChosenFaultMode %}
        	<ul>
 		<li>FaultModeID: {{ p.FaultModeID }}</li>
 		<li>FaultMode: {{ p.FaultMode }}</li>
@@ -39,23 +15,7 @@
 		<li>Priority: {{ p.Priority }}</li>
 		<li>LogicalRelationship: {{ p.LogicalRelationship }}</li>
     	</ul>
-    	{% endif %}
-    {% endfor %}
+   {% endfor %}
     
-<p>Chose the deeper mode:</p>
- {% for p in list2 %}
-       	<ul>
-		<li><a href="/fault_data/{{ p.FaultModeID }}/">{{ forloop.counter }}.{{ p.FaultMode }}</a></li>
-    	</ul>
-  {% endfor %}
 
-
-
-</div>
-
-<div id="footer">No Copyright</div>
-
-</div>
-
-
-</body>
+{% endblock %}
