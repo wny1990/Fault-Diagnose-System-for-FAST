@@ -1,0 +1,16 @@
+{% extends "frame.html" %}
+
+{% block content %}
+<h2>Data Brose:</h2>
+<p>List of FaultMode:</p>
+{% if FaultMode_list %}
+    <ul>
+    {% for p in FaultMode_list %}
+        <li><a href="/fault_data/{{ p.FaultModeID }}/">{{ p.FaultMode }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No FaultMode are available.</p>
+{% endif %}
+
+{% endblock %}

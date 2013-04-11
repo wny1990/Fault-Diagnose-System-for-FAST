@@ -1,0 +1,41 @@
+{% extends "frame.html" %}
+
+{% block content %}
+<br>
+<a class="large awesome">Fault Diagnose </a> 
+
+<p>List of FaultMode:</p>
+{% if FaultMode_list %}
+    <ul>
+    {% for p in FaultMode_list %}
+        <li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/">{{ p.FaultMode }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No FaultMode are available.</p>
+{% endif %}
+
+<p>Input the FaultModeID you are searching for:</p>
+
+
+<form action="/fault_data/search/" method="get">
+    <input type="text" name="search_text"><br>
+    <input type="submit" value="Search" class="large orange awesome"> 
+</form>
+
+
+<p>Input the FaultModeID you are searching for:</p>
+
+
+<form action="/fault_data/search/" method="get">
+{% csrf_token %}
+{% for choice in FaultMode_list %}
+    <input type="radio" name="search_text" id="choice{{ forloop.counter }}" value="{{ choice.FaultModeID }}" />
+    <label for="{{ forloop.counter }}">{{ choice.FaultMode }}</label><br />
+{% endfor %}
+
+<input type="submit" value="Submit" class="large orange awesome"> 
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "frame.html" %}
+
+{% block content %}
+<h2>Diagnose Details:</h2>
+<br>
+
+ {% for p in ChosenFaultMode %}
+       	<ul>
+		<li>FaultModeID: {{ p.FaultModeID }}</li>
+		<li>FaultMode: {{ p.FaultMode }}</li>
+		<li>FaultDescription: {{ p.FaultDescription }}</li>
+		<li>HighLevelFaultModeID: {{ p.HighLevelFaultModeID }}</li>
+		<li>DetectionMethod: {{ p.DetectionMethod }}</li>
+		<li>ManualDetectionMethodID: {{ p.ManualDetectionMethodID }}</li>
+		<li>FunctionID: {{ p.FunctionID }}</li>
+		<li>Priority: {{ p.Priority }}</li>
+		<li>LogicalRelationship: {{ p.LogicalRelationship }}</li>
+    	</ul>
+   {% endfor %}
+    
+<p>Chose the deeper mode:</p>
+ {% for p in list2 %}
+       	<ul>
+		<li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/">{{ forloop.counter }}.{{ p.FaultMode }}</a></li>
+    	</ul>
+  {% endfor %}
+{% endblock %}
+
