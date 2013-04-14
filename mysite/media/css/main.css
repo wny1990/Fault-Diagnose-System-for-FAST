@@ -9,9 +9,10 @@ h1 {margin-bottom:0;}
 h2 {margin-bottom:0;font-size:22px;}
 ul {margin:0;}
 
-li{list-style: square inside url("/media/arrow.gif");}
+li{list-style: square inside url("../arrow.gif");}
+
 .awesome, .awesome:visited {
-	background: #222 url(media/alert-overlay.png) repeat-x; 
+	background: #222 url(../alert-overlay.png) repeat-x; 
 	display: inline-block; 
 	padding: 5px 10px 6px; 
 	color: #fff; 
@@ -26,6 +27,8 @@ li{list-style: square inside url("/media/arrow.gif");}
 	cursor: pointer;
 }
 
+	.fixlength.awesome						{width:160px;}
+	.center.awesome							{text-align:center;}
 	.awesome:hover							{ background-color: #111; color: #fff; }
 	.awesome:active							{ top: 1px; }
 	.small.awesome, .small.awesome:visited 			{ font-size: 11px; padding: ; }
