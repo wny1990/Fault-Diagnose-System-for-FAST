@@ -5,17 +5,17 @@
 <br>
  {% for p in ChosenFaultMode %}
        	<ul>
-		<li>FaultModeID: {{ p.FaultModeID }}</li>
-		<li>FaultMode: {{ p.FaultMode }}</li>
-		<li>FaultDescription: {{ p.FaultDescription }}</li>
-		<li>HighLevelFaultModeID: {{ p.HighLevelFaultModeID }}</li>
-		<li>DetectionMethod: {{ p.DetectionMethod }}</li>
-		<li>ManualDetectionMethodID: {{ p.ManualDetectionMethodID }}</li>
-		<li>FunctionID: {{ p.FunctionID }}</li>
-		<li>Priority: {{ p.Priority }}</li>
-		<li>LogicalRelationship: {{ p.LogicalRelationship }}</li>
+		<li>FaultModeID（故障原因ID): 	{{ p.FaultModeID }}</li>
+		<li>FaultMode（故障模式）: {{ p.FaultMode }}</li>
+		<li>FaultDescription（故障描述）: {{ p.FaultDescription }}</li>
+		<li>HighLevelFaultModeID（高层故障模式ID）: {{ p.HighLevelFaultModeID }}</li>
+		<li>DetectionMethod（故障模式检测方式）: {{ p.DetectionMethod }}</li>
+		<li>ManualDetectionMethodID（手动检测方法ID）: {{ p.ManualDetectionMethodID }}</li>
+		<li>FunctionID（相关函数ID）: {{ p.FunctionID }}</li>
+		<li>Priority（优先级）: {{ p.Priority }}</li>
+		<li>LogicalRelationship（逻辑关系：当前故障模式和其高层故障模式的关系（与、或））: {{ p.LogicalRelationship }}</li>
     	</ul>
    {% endfor %}
-    
+
 
 {% endblock %}
