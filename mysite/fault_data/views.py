@@ -33,8 +33,9 @@ def search_form(request):
 	return render_to_response('search_form.html')
 
 def search(request):
-	msg = request.GET['search_text']
-	return dgdetail(request,msg)
+	search_text = request.GET['search_text'] 
+	
+	return dgdetail(request,search_text)
 
 def diagnose(request):
 	FaultMode_list = FaultMode.objects.order_by('FaultModeID')

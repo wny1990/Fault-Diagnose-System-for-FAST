@@ -3,8 +3,9 @@
 {% block content %}
 <br>
 <a class="large awesome">Fault Diagnose </a> 
-
-<p>List of FaultMode:</p>
+<br>
+<br>
+<p><b>1. List of FaultMode:</b></p>
 {% if FaultMode_list %}
     <ul>
     {% for p in FaultMode_list %}
@@ -15,7 +16,9 @@
     <p>No FaultMode are available.</p>
 {% endif %}
 
-<p>Input the FaultModeID you are searching for:</p>
+<br>
+<br>
+<p><b>2. Input the FaultModeID you are searching for:</b></p>
 
 
 <form action="/fault_data/search/" method="get">
@@ -23,8 +26,9 @@
     <input type="submit" value="Search" class="large orange awesome"> 
 </form>
 
-
-<p>Input the FaultModeID you are searching for:</p>
+<br>
+<br>
+<p><b>3. Input the FaultModeID you are searching for:</b></p>
 
 
 <form action="/fault_data/search/" method="get">

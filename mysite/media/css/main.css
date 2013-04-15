@@ -27,7 +27,7 @@ li{list-style: square inside url("../arrow.gif");}
 	cursor: pointer;
 }
 
-	.fixlength.awesome						{width:160px;}
+	.fixlength.awesome						{width:80%;}
 	.center.awesome							{text-align:center;}
 	.awesome:hover							{ background-color: #111; color: #fff; }
 	.awesome:active							{ top: 1px; }

@@ -1,6 +1,7 @@
 {% extends "frame.html" %}
 
 {% block content %}
+
 <h2>Diagnose Details:</h2>
 <br>
 
@@ -16,7 +17,7 @@
 		<li>Priority: {{ p.Priority }}</li>
 		<li>LogicalRelationship: {{ p.LogicalRelationship }}</li>
     	</ul>
-   {% endfor %}
+  {% endfor %}
     
 <p>Chose the deeper mode:</p>
  {% for p in list2 %}

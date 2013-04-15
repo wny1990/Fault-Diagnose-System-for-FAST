@@ -10,3 +10,10 @@ def homepage_view(request):
                'now': now,
 	})
 	return render(request,'homepage.html',context)
+	
+def test_view(request):
+	now = datetime.datetime.now()
+	context = Context({
+               'now': now,
+	})
+	return render(request,'test.html',context)
