@@ -1,8 +1,9 @@
 {% extends "frame.html" %}
 
 {% block content %}
-<br>
-<a class="large awesome">Fault Diagnose </a> 
+
+<!-- <a class="large awesome">Fault Diagnose </a>  -->
+<h2>Fault Diagnose:</h2>
 <br>
 <br>
 <p><b>1. List of FaultMode:</b></p>
@@ -16,18 +17,21 @@
     <p>No FaultMode are available.</p>
 {% endif %}
 
-<br>
-<br>
-<p><b>2. Input the FaultModeID you are searching for:</b></p>
 
 
+<br>
+<br>
+<p><b>2. Input the FaultMode Name you are searching for(模糊搜索):</b></p>
 <form action="/fault_data/search/" method="get">
     <input type="text" name="search_text"><br>
-    <input type="submit" value="Search" class="large orange awesome"> 
+    <input type="submit" value="Search &raquo" class="large orange awesome"> 
 </form>
+
+
 
 <br>
 <br>
+<!--
 <p><b>3. Input the FaultModeID you are searching for:</b></p>
 
 
@@ -38,8 +42,8 @@
     <label for="{{ forloop.counter }}">{{ choice.FaultMode }}</label><br />
 {% endfor %}
 
-<input type="submit" value="Submit" class="large orange awesome"> 
+<input type="submit" value="Submit &raquo" class="large orange awesome"> 
 </form>
-
+-->
 
 {% endblock %}

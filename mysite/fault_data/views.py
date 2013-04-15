@@ -34,8 +34,14 @@ def search_form(request):
 
 def search(request):
 	search_text = request.GET['search_text'] 
+#	search_list = FaultMode.objects.filter( FaultMode = search_text) 
+	search_list = FaultMode.objects.filter( FaultMode__contains = search_text) 
+	context = Context({
+               'search_list':search_list,
+	})
+	return render(request,'diagnose/search_list.html',context)
 	
-	return dgdetail(request,search_text)
+#	return dgdetail(request,search_text)
 
 def diagnose(request):
 	FaultMode_list = FaultMode.objects.order_by('FaultModeID')
