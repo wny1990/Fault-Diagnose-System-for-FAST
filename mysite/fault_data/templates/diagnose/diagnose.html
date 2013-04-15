@@ -5,7 +5,8 @@
 <!-- <a class="large awesome">Fault Diagnose </a>  -->
 <h2>Fault Diagnose:</h2>
 <br>
-<br>
+
+{% if FaultMode_list %}
 <p><b>1. List of FaultMode:</b></p>
 {% if FaultMode_list %}
     <ul>
@@ -45,5 +46,9 @@
 <input type="submit" value="Submit &raquo" class="large orange awesome"> 
 </form>
 -->
+{% else %}
+    <p>No FaultMode are available.</p>
+    
+{% endif %}
 
 {% endblock %}

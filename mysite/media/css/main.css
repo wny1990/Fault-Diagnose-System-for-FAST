@@ -1,8 +1,8 @@
-div#container{width:100%;min-height:100%;}
+div#container{width:100%;min-height:120%;}
 div#header {background-color:blue;color:white;}
-div#menu {background-color:#ffff99;min-height:150%;width:15%;float:left;}
+div#menu {background-color:#ffff99;min-height:120%;width:15%;float:left;}
 div#content {border-left:4px solid;border-left-style:ridge;border-left-color:BLUE;
-background-color:#EEEEEE;min-height:150%;width:84.7%;float:left;}
+background-color:#EEEEEE;min-height:120%;width:84.7%;float:left;}
 div#footer {background-color:#99bbbb;clear:both;text-align:center;}
 h1 {margin-bottom:0;}
 h2 {margin-bottom:0;font-size:22px;}
