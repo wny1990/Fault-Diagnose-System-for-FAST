@@ -3,26 +3,26 @@
 {% block content %}
 
 <!-- <a class="large awesome">Fault Diagnose </a>  -->
-<h2>Fault Diagnose:</h2>
+<h2>故障诊断:</h2>
 <br>
 
 {% if FaultMode_list %}
-<p><b>1. List of FaultMode:</b></p>
+<p><b>1. 故障模式列表:</b></p>
 {% if FaultMode_list %}
     <ul>
     {% for p in FaultMode_list %}
-        <li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/">{{ p.FaultMode }}</a></li>
+        <li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No FaultMode are available.</p>
+    <p>没有可用的故障模式数据.</p>
 {% endif %}
 
 
 
 <br>
 <br>
-<p><b>2. Input the FaultMode Name you are searching for(模糊搜索):</b></p>
+<p><b>2. 输入需要查询的故障模式名(模糊搜索):</b></p>
 <form action="/fault_data/search/" method="get">
     <input type="text" name="search_text"><br>
     <input type="submit" value="Search &raquo" class="large orange awesome"> 

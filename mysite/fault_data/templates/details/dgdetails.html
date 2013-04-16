@@ -2,28 +2,46 @@
 
 {% block content %}
 
-<h2>Diagnose Details:</h2>
+<h2>故障诊断细节:</h2>
 <br>
 
  {% for p in ChosenFaultMode %}
        	<ul>
-		<li>FaultModeID（故障原因ID):{{ p.FaultModeID }}</li>
-		<li>FaultMode（故障模式）: {{ p.FaultMode }}</li>
-		<li>FaultDescription（故障描述）: {{ p.FaultDescription }}</li>
-		<li>HighLevelFaultModeID（高层故障模式ID）: {{ p.HighLevelFaultModeID }}</li>
-		<li>DetectionMethod（故障模式检测方式）: {{ p.DetectionMethod }}</li>
-		<li>ManualDetectionMethodID（手动检测方法ID）: {{ p.ManualDetectionMethodID }}</li>
-		<li>FunctionID（相关函数ID）: {{ p.FunctionID }}</li>
-		<li>Priority（优先级）: {{ p.Priority }}</li>
-		<li>LogicalRelationship（逻辑关系：当前故障模式和其高层故障模式的关系（与、或））: {{ p.LogicalRelationship }}</li>
+		<li>FaultModeID（故障原因ID): 	<b>{{ p.FaultModeID }}</b></li>
+		<br>
+		<li>FaultMode（故障模式）: <b>{{ p.FaultMode }}</b></li>
+		<br>
+		<li>FaultDescription（故障描述）: <b>{{ p.FaultDescription }}</b></li>
+		<br>
+		<li>HighLevelFaultModeID（高层故障模式ID）: <b>{{ p.HighLevelFaultModeID }}</b></li>
+		<br>
+		<li>DetectionMethod（故障模式检测方式）: <b>{{ p.DetectionMethod }}</b></li>
+		<br>
+		<li>ManualDetectionMethodID（手动检测方法ID）: <b>{{ p.ManualDetectionMethodID }}</b></li>
+		<br>
+		<li>FunctionID（相关函数ID）: <b>{{ p.FunctionID }}</b></li>
+		<br>
+		<li>Priority（优先级）: <b>{{ p.Priority }}</b></li>
+		<br>
+		<li>LogicalRelationship（逻辑关系：当前故障模式和其高层故障模式的关系（与、或））: <b>{{ p.LogicalRelationship }}</b></li>
     	</ul>
   {% endfor %}
     
-<p>Chose the deeper mode:</p>
- {% for p in list2 %}
-       	<ul>
-		<li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/">{{ forloop.counter }}.{{ p.FaultMode }}</a></li>
-    	</ul>
-  {% endfor %}
+{% if list2 %}   
+<h2>子故障模式:</h2>
+	{% for p in list2 %}
+			<ul>
+			<li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ forloop.counter }}. 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
+			{% if p.DetectionMethod%}
+				<a href="/fault_data/function/{{ p.FunctionID }}/">检测信息： 第{{p.FaultModeID}}号故障存在自动检测方法，点击进行诊断</a>
+			{% else %}
+				无自动监测方法，请进行手动检测，相关信息如下：{{p.ManualDetectionMethodID}}
+			{% endif %}
+			<br><br>
+			</ul>
+	{% endfor %}
+{% else %}
+<h2>无子故障模式</h2>
+{% endif %}
 {% endblock %}
 

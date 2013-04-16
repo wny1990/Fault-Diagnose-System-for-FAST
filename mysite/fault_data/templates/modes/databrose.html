@@ -1,12 +1,13 @@
 {% extends "frame.html" %}
 
 {% block content %}
-<h2>Data Brose:</h2>
-<p>List of FaultMode:</p>
+<h2>数据浏览:</h2>
+<br>
+<p><b>故障模式列表:</b></p>
 {% if FaultMode_list %}
     <ul>
     {% for p in FaultMode_list %}
-        <li><a href="/fault_data/{{ p.FaultModeID }}/">{{ p.FaultMode }}</a></li>
+        <li><a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
