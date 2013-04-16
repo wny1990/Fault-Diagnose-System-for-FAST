@@ -1,0 +1,22 @@
+{% extends "frame.html" %}
+
+{% block content %}
+<br>
+
+<h2>故障搜索结果:</h2>
+<br>
+<br>
+{% if search_list %}
+    <ul>
+    {% for p in search_list %}
+        <li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/">第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No search resualt are available.</p>
+{% endif %}
+
+
+
+
+{% endblock %}
