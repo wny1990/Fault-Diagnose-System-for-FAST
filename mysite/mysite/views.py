@@ -5,11 +5,8 @@ from django.template import Context, loader
 import datetime
 
 def homepage_view(request):
-	now = datetime.datetime.now()
-	context = Context({
-               'now': now,
-	})
-	return render(request,'homepage.html',context)
+
+	return render(request,'homepage.html')
 	
 def test_view(request):
 	now = datetime.datetime.now()

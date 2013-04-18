@@ -6,10 +6,13 @@
 <h2>自动检测函数:</h2>
 <br>
 <br>
+
 {% if function_id %}
     <ul>
         <li>第{{function_id}}号自动检测函数</li>
-        <li>自动检测结果{{test_result}}</li>
+        <p>自动检测结果:</p>
+        <p>以下内容是一个对外部函数调用的测试，读取/proc/meminfo的内容并显示在网页上：</p>
+        <p>{{test_result}}</p>
     </ul>
 {% else %}
     <p>No search resualt are available.</p>

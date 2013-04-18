@@ -51,8 +51,10 @@ def diagnose(request):
 	return render(request,'diagnose/diagnose.html',context)
 
 def dfunction(request,function_id):
-	
-	test_result='All Right'
+	infile = open("/proc/meminfo")
+	file_content = infile.read()
+#	test_result='All Right'
+	test_result=file_content
 	context = Context({
                'function_id': function_id,'test_result':test_result,
 	})
