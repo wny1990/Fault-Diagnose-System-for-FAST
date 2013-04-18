@@ -49,3 +49,12 @@ def diagnose(request):
                'FaultMode_list': FaultMode_list,
 	})
 	return render(request,'diagnose/diagnose.html',context)
+
+def dfunction(request,function_id):
+	
+	test_result='All Right'
+	context = Context({
+               'function_id': function_id,'test_result':test_result,
+	})
+	return render(request,'diagnose/dfunction.html',context)
+	

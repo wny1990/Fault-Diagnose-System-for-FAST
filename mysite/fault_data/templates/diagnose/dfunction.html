@@ -1,0 +1,21 @@
+{% extends "frame.html" %}
+
+{% block content %}
+<br>
+
+<h2>自动检测函数:</h2>
+<br>
+<br>
+{% if function_id %}
+    <ul>
+        <li>第{{function_id}}号自动检测函数</li>
+        <li>自动检测结果{{test_result}}</li>
+    </ul>
+{% else %}
+    <p>No search resualt are available.</p>
+{% endif %}
+
+
+
+
+{% endblock %}
