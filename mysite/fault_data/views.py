@@ -34,14 +34,12 @@ def search_form(request):
 
 def search(request):
 	search_text = request.GET['search_text'] 
-#	search_list = FaultMode.objects.filter( FaultMode = search_text) 
 	search_list = FaultMode.objects.filter( FaultMode__contains = search_text) 
 	context = Context({
                'search_list':search_list,
 	})
 	return render(request,'diagnose/search_list.html',context)
 	
-#	return dgdetail(request,search_text)
 
 def diagnose(request):
 	FaultMode_list = FaultMode.objects.order_by('FaultModeID')
@@ -49,11 +47,17 @@ def diagnose(request):
                'FaultMode_list': FaultMode_list,
 	})
 	return render(request,'diagnose/diagnose.html',context)
+	
+def datamanage(request):
+	FaultMode_mlist = FaultMode.objects.order_by('FaultModeID')
+	context = Context({
+               'FaultMode_list': FaultMode_mlist,
+	})
+	return render(request,'manage/data_manage.html',context)
 
 def dfunction(request,function_id):
 	infile = open("/proc/meminfo")
 	file_content = infile.read()
-#	test_result='All Right'
 	test_result=file_content
 	context = Context({
                'function_id': function_id,'test_result':test_result,
