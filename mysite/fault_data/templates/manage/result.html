@@ -1,0 +1,13 @@
+{% extends "frame.html" %}
+
+{% block content %}
+<h2>数据管理:</h2>
+<br>
+<p><b>处理结果:</b></p>
+{% if mode_id %}
+<p>已经成功 {{ action }} 第{{ mode_id }}号故障模式。</p>
+{% else %}
+    <p>No mode_id are available.</p>
+{% endif %}
+
+{% endblock %}
