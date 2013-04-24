@@ -4,10 +4,15 @@
 <h2>数据管理:</h2>
 <br>
 <p><b>处理结果:</b></p>
-{% if mode_id %}
-<p>已经成功 {{ action }} 第{{ mode_id }}号故障模式。</p>
+{% if action %}
+<p>已经成功<b>{{ action }} </b>第  <b> {{ mode_id }} </b>号故障模式。</p>
 {% else %}
-    <p>No mode_id are available.</p>
+{% endif %}
+
+
+{% if search_text %}
+<p>已经成功将ID为<b>{{ mode_id }}</b>的故障模式的属性<b>{{ attr }}</b>修改为<b>{{ search_text }}</b>。</p>
+{% else %}
 {% endif %}
 
 {% endblock %}

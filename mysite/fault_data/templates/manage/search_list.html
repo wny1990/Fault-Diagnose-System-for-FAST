@@ -1,0 +1,26 @@
+{% extends "frame.html" %}
+
+{% block content %}
+<br>
+
+<h2>搜索结果:</h2>
+<br>
+<br>
+{% if search_list %}
+    <ul>
+    {% for p in search_list %}
+        <li><a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
+        <a href="/fault_data/del/{{ p.FaultModeID }}/">删除第{{p.FaultModeID}}号故障模式</a>
+        ，
+        <a href="/fault_data/modify/{{ p.FaultModeID }}/">修改第{{p.FaultModeID}}号故障模式</a>
+    <br><br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No search resualt are available.</p>
+{% endif %}
+
+
+
+
+{% endblock %}
