@@ -8,6 +8,8 @@
     <ul>
     {% for p in FaultMode_list %}
         <li><a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
+        <a href="/fault_data/del/{{ p.FaultModeID }}/">删除第{{p.FaultModeID}}号故障</a>
+        <br><br>
     {% endfor %}
     </ul>
 {% else %}

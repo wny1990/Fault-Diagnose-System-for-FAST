@@ -64,3 +64,9 @@ def dfunction(request,function_id):
 	})
 	return render(request,'diagnose/dfunction.html',context)
 	
+def delmode(request,mode_id):
+	action= "delete"
+	context = Context({
+               'mode_id':mode_id,'action':action
+	})
+	return render(request,'manage/result.html',context)
