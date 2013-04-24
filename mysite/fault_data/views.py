@@ -70,3 +70,10 @@ def delmode(request,mode_id):
                'mode_id':mode_id,'action':action
 	})
 	return render(request,'manage/result.html',context)
+	
+def modifymode(request,mode_id):
+	action= "modify"
+	context = Context({
+               'mode_id':mode_id,'action':action
+	})
+	return render(request,'manage/result.html',context)
