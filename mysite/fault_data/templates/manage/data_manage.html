@@ -6,9 +6,12 @@
 <p><b>故障模式列表:</b></p>
 {% if FaultMode_list %}
     <ul>
+		 <li><a href="/fault_data/addmode/">增添故障模式</a></li>
+		 <br>
     {% for p in FaultMode_list %}
         <li><a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
         <a href="/fault_data/del/{{ p.FaultModeID }}/">删除第{{p.FaultModeID}}号故障模式</a>
+        ，
         <a href="/fault_data/modify/{{ p.FaultModeID }}/">修改第{{p.FaultModeID}}号故障模式</a>
         <br><br>
     {% endfor %}

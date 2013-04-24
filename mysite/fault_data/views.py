@@ -71,9 +71,10 @@ def delmode(request,mode_id):
 	})
 	return render(request,'manage/result.html',context)
 	
+
 def modifymode(request,mode_id):
-	action= "modify"
+	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)
 	context = Context({
-               'mode_id':mode_id,'action':action
+               'mode_id':mode_id,'ChosenFaultMode':ChosenFaultMode,
 	})
-	return render(request,'manage/result.html',context)
+	return render(request,'manage/modify.html',context)
