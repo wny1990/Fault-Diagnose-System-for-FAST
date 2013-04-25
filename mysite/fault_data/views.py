@@ -81,12 +81,12 @@ def delmode(request,mode_id):
 	})
 	return render(request,'manage/result.html',context)
 	
-def addmode(request):
+def add_data(request):
 	mode_id=1
 	context = Context({
                'mode_id':mode_id,
 	})
-	return render(request,'manage/addmode.html',context)
+	return render(request,'manage/add_data.html',context)
 
 def modifymode(request,mode_id):
 	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)
@@ -114,6 +114,23 @@ def detailmodify(request,mode_id,attr):
 	if attr == 'LogicalRelationship':
 		FaultMode.objects.filter(FaultModeID = mode_id).update(LogicalRelationship = search_text)
 	context = Context({
-               'mode_id':mode_id,'search_text':search_text,'attr':attr
+               'mode_id':mode_id,'modify_text':search_text,'attr':attr
+	})
+	return render(request,'manage/result.html',context)
+
+
+def addattr(request):
+	FaultModeID = request.GET['FaultModeID'] 
+	FaultMode = request.GET['FaultMode'] 
+	FaultDescription = request.GET['FaultDescription']
+	HighLevelFaultModeID = request.GET['HighLevelFaultModeID']
+	DetectionMethod = request.GET['DetectionMethod'] 
+	ManualDetectionMethodID = request.GET['ManualDetectionMethodID'] 
+	FunctionID = request.GET['FunctionID'] 
+	Priority = request.GET['Priority'] 
+	FaultDescription = request.GET['LogicalRelationship'] 
+	addattr=1
+	context = Context({
+               'addattr':addattr,'FaultModeID':FaultModeID,'FaultMode':FaultMode,'FaultDescription':FaultDescription,'HighLevelFaultModeID':HighLevelFaultModeID,
 	})
 	return render(request,'manage/result.html',context)

@@ -3,11 +3,12 @@
 {% block content %}
 <h2>数据管理:</h2>
 <br>
+<a href="/fault_data/add_data/" class="large magenta awesome">添加数据 &raquo</a> <br><br>
+<!-- <li><a href="/fault_data/addmode/">添加故障模式</a></li> -->
 
-<li><a href="/fault_data/addmode/">添加故障模式</a></li>
-<br>
-<li><a href="/fault_data/manage_list/">故障模式列表</a></li>
-<br>
+<a href="/fault_data/manage_list/" class="large magenta awesome">数据列表及修改选项 &raquo</a> <br><br>
+<!-- <li><a href="/fault_data/manage_list/">故障模式列表及修改选项</a></li> -->
+
 <li>搜索故障模式</li>
 <form action="/fault_data/manage_search/" method="get">
     <input type="text" name="search_text"><br>

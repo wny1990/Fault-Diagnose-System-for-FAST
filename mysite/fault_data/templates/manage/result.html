@@ -9,9 +9,18 @@
 {% else %}
 {% endif %}
 
+{% if addattr %}
+<p>已经成功添加故障模式</p>
+<p>FaultModeID: {{ FaultModeID }}</p>
+<p>FaultMode: {{ FaultMode }}</p>
+<p>FaultDescription: {{ FaultDescription }}</p>
+<p>HighLevelFaultModeID:{{ HighLevelFaultModeID }}</p>
+{% else %}
+{% endif %}
 
-{% if search_text %}
-<p>已经成功将ID为<b>{{ mode_id }}</b>的故障模式的属性<b>{{ attr }}</b>修改为<b>{{ search_text }}</b>。</p>
+
+{% if modify_text %}
+<p>已经成功将ID为<b>{{ mode_id }}</b>的故障模式的属性<b>{{ attr }}</b>修改为<b>{{ modify_text }}</b>。</p>
 {% else %}
 {% endif %}
 
