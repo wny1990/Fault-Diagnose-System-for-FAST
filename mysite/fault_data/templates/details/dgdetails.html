@@ -5,42 +5,87 @@
 <h2>故障诊断细节:</h2>
 <br>
 
- {% for p in ChosenFaultMode %}
-     	<ul>
-		<li>FaultModeID（故障原因ID): 	<b>{{ p.FaultModeID }}</b></li>
-		解释：故障模式的ID号
-		<br><br>
-		<li>FaultMode（故障模式）: <b>{{ p.FaultMode }}</b></li>
-		解释：故障模式或故障原因，即故障树中的节点名称
-		<br><br>
-		<li>FaultDescription（故障描述）: <b>{{ p.FaultDescription }}</b></li>
-		解释：对于故障模式的具体描述
-		<br><br>
-		<li>HighLevelFaultModeID（高层故障模式ID）: <b>{{ p.HighLevelFaultModeID }}</b></li>
-		解释：当前故障模式的父节点的ID
-		<br><br>
-		<li>DetectionMethod（故障模式检测方式）: <b>{{ p.DetectionMethod }}</b></li>
-		解释：故障模式检测方式：手动方式或通过状态来检测（0是自动检测，非零是手动检测）
-		<br><br>
-		<li>ManualDetectionMethodID（手动检测方法ID）: <b>{{ p.ManualDetectionMethodID }}</b></li>
-		解释：手动检测方法ID 
-		<br><br>
-		<li>FunctionID（相关函数ID）: <b>{{ p.FunctionID }}</b></li>
-		解释：相关函数ID
-		<br><br>
-		<li>Priority（优先级）: <b>{{ p.Priority }}</b></li>
-		解释：优先级
-		<br><br>
-		<li>LogicalRelationship（逻辑关系：当前故障模式和其高层故障模式的关系（与、或））: <b>{{ p.LogicalRelationship }}</b></li>
-    	解释：逻辑关系：当前故障模式和其高层故障模式的关系（与、或）
-    	</ul>
-  {% endfor %}
+{% for p in ChosenFaultMode %}
+	<table border="2">
+	<tr>
+		<th>属性</th>
+		<th>解释</th>
+		<th>值</th>
+	</tr>
+	<tr>
+		<td>FaultModeID</td>
+		<td>故障模式ID：故障模式的ID号</td>
+		<td><b>{{ p.FaultModeID }}</b></td>
+	</tr>
+<tr>
+		<td>FaultMode</td>
+		<td>故障模式：故障模式或故障原因，即故障树中的节点名称</td>
+		<td><b>{{ p.FaultMode }}</b></td>
+</tr>
+<tr>
+		<td>FaultDescription</td>
+		<td>故障描述：对于故障模式的具体描述</td>
+		<td><b>{{ p.FaultDescription }}</b></td>
+</tr>
+<tr>
+		<td>FaultMode</td>
+		<td>故障模式：故障模式或故障原因，即故障树中的节点名称</td>
+		<td><b>{{ p.FaultMode }}</b></td>
+</tr>
+<tr>
+		<td>HighLevelFaultModeID</td>
+		<td>高层故障模式ID：故当前故障模式的父节点的ID</td>
+		<td><b>{{  p.HighLevelFaultModeID }}</b></td>
+</tr>
+<tr>
+		<td>DetectionMethod（</td>
+		<td>故障模式检测方式：手动方式或通过状态来检测（0是自动检测，非零是手动检测）</td>
+		<td><b>{{ p.DetectionMethod }}</b></td>
+</tr>
+<tr>
+		<td>ManualDetectionMethodID（</td>
+		<td>手动检测方法ID</td>
+		<td><b>{{ p.ManualDetectionMethodID }}</b></td>
+</tr>
+<tr>
+		<td>FunctionID</td>
+		<td>相关函数ID</td>
+		<td><b>{{ p.FunctionID }}</b></td>
+</tr>
+<tr>
+		<td>Priority</td>
+		<td>优先级</td>
+		<td><b>{{ p.Priority }}</b></td>
+</tr>
+<tr>
+		<td>LogicalRelationship</td>
+		<td>逻辑关系：当前故障模式和其高层故障模式的关系（与、或）</td>
+		<td><b>{{ p.LogicalRelationship  }}</b></td>
+</tr>
+</table>
+ {% endfor %}
     
 {% if list2 %}   
 <h2>子故障模式:</h2>
 	<br>
+	<table border="2">
+	<tr>
+		<th>故障号</th>
+		<th>故障</th>
+		<th>检测信息</th>
+	</tr>
+		{% for p in list2 %}
+			<tr>
+				<td> 第{{p.FaultModeID}}号故障</td>
+				<td><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ p.FaultMode }}</a></td>
+				<td><a href="/fault_data/dfunction/{{ p.FunctionID }}/">检测信息： 第{{p.FaultModeID}}号故障存在自动检测方法，点击进行诊断</a></td>
+			</tr>
+			
+			
+	{% endfor %}
+		</table>
+<!--	
 	{% for p in list2 %}
-			<ul>
 			<li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ forloop.counter }}. 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
 			{% if p.DetectionMethod%}
 				<a href="/fault_data/dfunction/{{ p.FunctionID }}/">检测信息： 第{{p.FaultModeID}}号故障存在自动检测方法，点击进行诊断</a>
@@ -48,8 +93,9 @@
 				无自动监测方法，请进行手动检测，相关信息如下：{{p.ManualDetectionMethodID}}
 			{% endif %}
 			<br><br>
-			</ul>
+			
 	{% endfor %}
+	-->
 {% else %}
 <h2>无子故障模式</h2>
 {% endif %}

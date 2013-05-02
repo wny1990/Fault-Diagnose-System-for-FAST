@@ -2,7 +2,7 @@ from django.db import models
 
 class FaultMode(models.Model):
  
-	FaultModeID = models.CharField(max_length=15)
+	FaultModeID = models.IntegerField(editable=False, default=0)
 	FaultMode = models.CharField(max_length=200)
 	FaultDescription= models.CharField(max_length=200)
 	HighLevelFaultModeID = models.CharField(max_length=15)
@@ -27,7 +27,7 @@ class FaultCause(models.Model):
 
 class FaultRelation(models.Model):
 
-	FaultModeID = models.CharField(max_length=15)
+	FaultModeID = models.IntegerField(editable=False, default=0)
 	FaultCauseID = models.CharField(max_length=15)
 	LogicalRelationship = models.BooleanField()
 

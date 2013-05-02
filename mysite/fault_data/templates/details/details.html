@@ -3,6 +3,67 @@
 {% block content %}
 <h2>故障数据细节:</h2>
 <br>
+{% for p in ChosenFaultMode %}
+	<table border="2">
+	<tr>
+		<th>属性</th>
+		<th>解释</th>
+		<th>值</th>
+	</tr>
+	<tr>
+		<td>FaultModeID</td>
+		<td>故障模式ID：故障模式的ID号</td>
+		<td><b>{{ p.FaultModeID }}</b></td>
+	</tr>
+<tr>
+		<td>FaultMode</td>
+		<td>故障模式：故障模式或故障原因，即故障树中的节点名称</td>
+		<td><b>{{ p.FaultMode }}</b></td>
+</tr>
+<tr>
+		<td>FaultDescription</td>
+		<td>故障描述：对于故障模式的具体描述</td>
+		<td><b>{{ p.FaultDescription }}</b></td>
+</tr>
+<tr>
+		<td>FaultMode</td>
+		<td>故障模式：故障模式或故障原因，即故障树中的节点名称</td>
+		<td><b>{{ p.FaultMode }}</b></td>
+</tr>
+<tr>
+		<td>HighLevelFaultModeID</td>
+		<td>高层故障模式ID：故当前故障模式的父节点的ID</td>
+		<td><b>{{  p.HighLevelFaultModeID }}</b></td>
+</tr>
+<tr>
+		<td>DetectionMethod（</td>
+		<td>故障模式检测方式：手动方式或通过状态来检测（0是自动检测，非零是手动检测）</td>
+		<td><b>{{ p.DetectionMethod }}</b></td>
+</tr>
+<tr>
+		<td>ManualDetectionMethodID（</td>
+		<td>手动检测方法ID</td>
+		<td><b>{{ p.ManualDetectionMethodID }}</b></td>
+</tr>
+<tr>
+		<td>FunctionID</td>
+		<td>相关函数ID</td>
+		<td><b>{{ p.FunctionID }}</b></td>
+</tr>
+<tr>
+		<td>Priority</td>
+		<td>优先级</td>
+		<td><b>{{ p.Priority }}</b></td>
+</tr>
+<tr>
+		<td>LogicalRelationship</td>
+		<td>逻辑关系：当前故障模式和其高层故障模式的关系（与、或）</td>
+		<td><b>{{ p.LogicalRelationship  }}</b></td>
+</tr>
+</table>
+ {% endfor %}
+
+<!-- 
  {% for p in ChosenFaultMode %}
        	<ul>
 		<li>FaultModeID（故障原因ID): 	<b>{{ p.FaultModeID }}</b></li>
@@ -33,6 +94,5 @@
     	解释：逻辑关系：当前故障模式和其高层故障模式的关系（与、或）
     	</ul>
    {% endfor %}
-
-
+-->
 {% endblock %}
