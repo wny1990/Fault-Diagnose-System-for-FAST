@@ -12,6 +12,7 @@ databrowse.site.register(FaultMode)
 urlpatterns = patterns('',
 	(r'^databrowse/(.*)', databrowse.site.root),
 	url(r'^$', views.databrose),
+	url(r'^all/$', views.broseall),
 	url(r'^search-form/$', views.search_form),
 	url(r'^search/$', views.search),
 	url(r'^manage_search/$', views.manage_search),

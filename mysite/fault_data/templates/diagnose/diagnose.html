@@ -6,12 +6,11 @@
 <h2>故障诊断:</h2>
 <br>
 
-{% if FaultMode_list %}
-<p><b>1. 故障模式列表:</b></p>
-{% if FaultMode_list %}
+<p><b>1. 高层故障模式列表:</b></p>
+{% if HighLevelFaultMode_list %}
     <ul>
-    {% for p in FaultMode_list %}
-        <li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
+    {% for p in HighLevelFaultMode_list %}
+			<li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -47,9 +46,5 @@
 <input type="submit" value="Submit &raquo" class="large orange awesome"> 
 </form>
 -->
-{% else %}
-    <p>No FaultMode are available.</p>
-    
-{% endif %}
 
 {% endblock %}

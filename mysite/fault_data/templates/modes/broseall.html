@@ -3,22 +3,15 @@
 {% block content %}
 <h2>数据浏览:</h2>
 <br>
-<p><b>1. 高层故障模式列表:</b></p>
-{% if HighLevelFaultMode_list %}
+<p><b>故障模式一览表:</b></p>
+{% if FaultMode_list %}
     <ul>
-    {% for p in HighLevelFaultMode_list %}
+    {% for p in FaultMode_list %}
 			<li><a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
+
     {% endfor %}
     </ul>
 {% else %}
     <p>没有可用的故障模式数据.</p>
-
 {% endif %}
-
-<p><b>2. 故障模式一览表:</b></p>
-
-<ul>
-<li><a href="/fault_data/all/"> 故障模式一览表</a></li>
-</ul>
-
 {% endblock %}

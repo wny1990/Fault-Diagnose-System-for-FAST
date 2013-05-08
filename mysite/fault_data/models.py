@@ -1,11 +1,12 @@
 from django.db import models
 
+
 class FaultMode(models.Model):
  
 	FaultModeID = models.IntegerField(editable=False, default=0)
 	FaultMode = models.CharField(max_length=200)
 	FaultDescription= models.CharField(max_length=200)
-	HighLevelFaultModeID = models.CharField(max_length=15)
+#	HighLevelFaultModeID = models.CharField(max_length=15)
 	DetectionMethod = models.BooleanField()
 	ManualDetectionMethodID = models.CharField(max_length=15)
 	FunctionID = models.CharField(max_length=15)
@@ -25,11 +26,25 @@ class FaultCause(models.Model):
 	LogicalRelationship = models.BooleanField()
 	MaintenanceSuggestions = models.CharField(max_length=300)
 
+class FaultModeRelation(models.Model):
+
+	HighLevelFaultModeID = models.IntegerField(editable=False, default=0)
+	FaultModeID = models.CharField(max_length=15)
+	LogicalRelationship = models.BooleanField()
+
+class FaultCauseRelation(models.Model):
+
+	FaultModeID = models.IntegerField(editable=False, default=0)
+	FaultCauseID = models.CharField(max_length=15)
+	LogicalRelationship = models.BooleanField()
+
+'''
 class FaultRelation(models.Model):
 
 	FaultModeID = models.IntegerField(editable=False, default=0)
 	FaultCauseID = models.CharField(max_length=15)
 	LogicalRelationship = models.BooleanField()
+'''
 
 class ManualDetection(models.Model):
 

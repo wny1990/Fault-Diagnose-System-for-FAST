@@ -2,27 +2,42 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import Context, loader
-from fault_data.models import FaultMode
+from fault_data.models import *
 
 def databrose(request):
+	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = 0)
+	list1=list0.values_list('FaultModeID')
+	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
+	context = Context({
+               'HighLevelFaultMode_list': list2,
+	})
+	return render(request,'modes/databrose.html',context)
+	
+def broseall(request):
 	FaultMode_list = FaultMode.objects.order_by('FaultModeID')
 	context = Context({
                'FaultMode_list': FaultMode_list,
 	})
-	return render(request,'modes/databrose.html',context)
-
+	return render(request,'modes/broseall.html',context)
+	
 def detail(request,mode_id):
 	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)
-	list2 = FaultMode.objects.filter( HighLevelFaultModeID = mode_id) 
+#	list2 = FaultMode.objects.filter( HighLevelFaultModeID = mode_id)
+	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = mode_id)
+	list1=list0.values_list('FaultModeID')
+	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
 	context = Context({
-               'FaultModeID':mode_id,'ChosenFaultMode':ChosenFaultMode,
+               'FaultModeID':mode_id,'ChosenFaultMode':ChosenFaultMode,'list2':list2
 	})
 
 	return render(request,'details/details.html',context)
 
 def dgdetail(request,mode_id):
 	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)
-	list2 = FaultMode.objects.filter( HighLevelFaultModeID = mode_id) 
+#	list2 = FaultMode.objects.filter( HighLevelFaultModeID = mode_id)
+	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = mode_id)
+	list1=list0.values_list('FaultModeID')
+	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
 	context = Context({
                'FaultModeID':mode_id,'ChosenFaultMode':ChosenFaultMode,'list2':list2
 	})
@@ -49,9 +64,12 @@ def manage_search(request):
 	return render(request,'manage/search_list.html',context)
 
 def diagnose(request):
-	FaultMode_list = FaultMode.objects.order_by('FaultModeID')
+	FaultMode_list= FaultMode.objects.all()
+	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = 0)
+	list1=list0.values_list('FaultModeID')
+	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
 	context = Context({
-               'FaultMode_list': FaultMode_list,
+               'HighLevelFaultMode_list': list2, 'FaultMode_list': FaultMode_list,
 	})
 	return render(request,'diagnose/diagnose.html',context)
 	
@@ -101,8 +119,8 @@ def detailmodify(request,mode_id,attr):
 		FaultMode.objects.filter(FaultModeID = mode_id).update(FaultMode = search_text)
 	if attr == 'FaultDescription':
 		FaultMode.objects.filter(FaultModeID = mode_id).update(FaultDescription = search_text)
-	if attr == 'HighLevelFaultModeID':
-		FaultMode.objects.filter(FaultModeID = mode_id).update(HighLevelFaultModeID = search_text)
+#	if attr == 'HighLevelFaultModeID':
+#		FaultMode.objects.filter(FaultModeID = mode_id).update(HighLevelFaultModeID = search_text)
 	if attr == 'DetectionMethod':
 		FaultMode.objects.filter(FaultModeID = mode_id).update(DetectionMethod = search_text)
 	if attr == 'ManualDetectionMethodID':
@@ -123,14 +141,17 @@ def addattr(request):
 	FaultModeID = request.GET['FaultModeID'] 
 	FaultMode = request.GET['FaultMode'] 
 	FaultDescription = request.GET['FaultDescription']
-	HighLevelFaultModeID = request.GET['HighLevelFaultModeID']
+#	HighLevelFaultModeID = request.GET['HighLevelFaultModeID']
 	DetectionMethod = request.GET['DetectionMethod'] 
 	ManualDetectionMethodID = request.GET['ManualDetectionMethodID'] 
 	FunctionID = request.GET['FunctionID'] 
 	Priority = request.GET['Priority'] 
 	FaultDescription = request.GET['LogicalRelationship'] 
 	addattr=1
+#	context = Context({
+#               'addattr':addattr,'FaultModeID':FaultModeID,'FaultMode':FaultMode,'FaultDescription':FaultDescription,'HighLevelFaultModeID':HighLevelFaultModeID,
+#	})
 	context = Context({
-               'addattr':addattr,'FaultModeID':FaultModeID,'FaultMode':FaultMode,'FaultDescription':FaultDescription,'HighLevelFaultModeID':HighLevelFaultModeID,
+               'addattr':addattr,'FaultModeID':FaultModeID,'FaultMode':FaultMode,'FaultDescription':FaultDescription,
 	})
 	return render(request,'manage/result.html',context)

@@ -4,7 +4,9 @@
 <h2>故障数据细节:</h2>
 <br>
 {% for p in ChosenFaultMode %}
-	<table border="2">
+
+<!--	<table border="2" bgcolor=#DCDCDC> -->
+<table border="2"
 	<tr>
 		<th>属性</th>
 		<th>解释</th>
@@ -25,11 +27,7 @@
 		<td>故障描述：对于故障模式的具体描述</td>
 		<td><b>{{ p.FaultDescription }}</b></td>
 </tr>
-<tr>
-		<td>FaultMode</td>
-		<td>故障模式：故障模式或故障原因，即故障树中的节点名称</td>
-		<td><b>{{ p.FaultMode }}</b></td>
-</tr>
+
 <tr>
 		<td>HighLevelFaultModeID</td>
 		<td>高层故障模式ID：故当前故障模式的父节点的ID</td>
@@ -95,4 +93,29 @@
     	</ul>
    {% endfor %}
 -->
+
+{% if list2 %}   
+<h2>子故障模式:</h2>
+	<br>
+	<table border="2">
+	<tr>
+		<th>故障号</th>
+		<th>故障</th>
+		<th>检测信息</th>
+	</tr>
+		{% for p in list2 %}
+			<tr>
+				<td> 第{{p.FaultModeID}}号故障</td>
+				<td><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ p.FaultMode }}</a></td>
+				<td><a href="/fault_data/dfunction/{{ p.FunctionID }}/">检测信息： 第{{p.FaultModeID}}号故障存在自动检测方法，点击进行诊断</a></td>
+			</tr>
+			
+			
+	{% endfor %}
+		</table>
+{% else %}
+<h2>无子故障模式</h2>
+{% endif %}
+
+
 {% endblock %}

@@ -7,15 +7,16 @@
 <br>
 <br>
 {% if search_list %}
-    <ul>
+   <table border="2">
     {% for p in search_list %}
-        <li><a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
-        <a href="/fault_data/del/{{ p.FaultModeID }}/">删除第{{p.FaultModeID}}号故障模式</a>
-        ，
-        <a href="/fault_data/modify/{{ p.FaultModeID }}/">修改第{{p.FaultModeID}}号故障模式</a>
-    <br><br>
+     <tr>   
+		<td> <a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障</a>:</td>
+		<td> {{ p.FaultMode }} </td>
+       <td> <a href="/fault_data/del/{{ p.FaultModeID }}/">删除第{{p.FaultModeID}}号故障模式</a></td>
+       <td> <a href="/fault_data/modify/{{ p.FaultModeID }}/">修改第{{p.FaultModeID}}号故障模式</a></td>
+    </tr>
     {% endfor %}
-    </ul>
+    </table>
 {% else %}
     <p>No search resualt are available.</p>
 {% endif %}
