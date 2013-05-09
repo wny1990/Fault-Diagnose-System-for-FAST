@@ -29,7 +29,6 @@ def broseallcause(request):
 	
 def detail(request,mode_id):
 	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)
-#	list2 = FaultMode.objects.filter( HighLevelFaultModeID = mode_id)
 	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = mode_id)
 	list1=list0.values_list('FaultModeID')
 	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
@@ -88,6 +87,9 @@ def diagnose(request):
 	
 def datamanage(request):
 	return render(request,'manage/data_manage.html')
+	
+def syslog(request):
+	return render(request,'syslog/syslog_main.html')
 	
 def managelist(request):
 	FaultMode_mlist = FaultMode.objects.order_by('FaultModeID')
@@ -150,7 +152,7 @@ def detailmodify(request,mode_id,attr):
 	return render(request,'manage/result.html',context)
 
 
-def addattr(request):
+def addmodeattr(request):
 	FaultModeID = request.GET['FaultModeID'] 
 	FaultMode = request.GET['FaultMode'] 
 	FaultDescription = request.GET['FaultDescription']

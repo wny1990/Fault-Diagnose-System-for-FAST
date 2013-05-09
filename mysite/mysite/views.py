@@ -14,3 +14,6 @@ def test_view(request):
                'now': now,
 	})
 	return render(request,'test.html',context)
+def bttest_view(request):
+
+	return render(request,'test1.html')
