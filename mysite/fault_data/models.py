@@ -15,7 +15,7 @@ class FaultMode(models.Model):
 
 class FaultCause(models.Model):
 	
-	FaultCauseID = models.CharField(max_length=15)
+	FaultCauseID = models.IntegerField(editable=False, default=0)
 	FaultCause = models.CharField(max_length=15)
 	FaultCauseDescription= models.CharField(max_length=200)
 	HighLevelFaultModeID = models.CharField(max_length=15)
@@ -35,7 +35,7 @@ class FaultModeRelation(models.Model):
 class FaultCauseRelation(models.Model):
 
 	FaultModeID = models.IntegerField(editable=False, default=0)
-	FaultCauseID = models.CharField(max_length=15)
+	FaultCauseID =  models.IntegerField(editable=False, default=0)
 	LogicalRelationship = models.BooleanField()
 
 '''

@@ -60,9 +60,9 @@
 </tr>
 </table>
  {% endfor %}
-    
-{% if list2 %}   
+
 <h2>子故障模式:</h2>
+{% if SonFaultMode %}   
 	<br>
 	<table border="2">
 	<tr>
@@ -70,7 +70,7 @@
 		<th>故障</th>
 		<th>检测信息</th>
 	</tr>
-		{% for p in list2 %}
+		{% for p in SonFaultMode %}
 			<tr>
 				<td> 第{{p.FaultModeID}}号故障</td>
 				<td><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ p.FaultMode }}</a></td>
@@ -81,12 +81,37 @@
 	{% endfor %}
 		</table>
 {% else %}
-<h2>无子故障模式</h2>
+<b>无子故障模式</b>
 {% endif %}
 
 <h2>故障诊断路径:</h2>
-<h2>故障诊断提示:</h2>
+
+<br>
 <h2>与该故障模式相关的故障原因:</h2>
+
+{% if SonFaultCause %}   
+	<br>
+	<table border="2">
+	<tr>
+		<th>故障原因号</th>
+		<th>故障原因</th>
+		<th>故障原因描述</th>
+		<th>维修建议：</th>
+	</tr>
+		{% for p in SonFaultCause %}
+			<tr>
+				<td> 第{{p.FaultCauseID}}号故障原因</td>
+				<td>{{ p.FaultCause }}</td>
+				<td>{{ p.FaultCauseDescription }}</td>
+				<td>{{ p.MaintenanceSuggestions }}</td>
+			</tr>
+			
+		{% endfor %}
+		</table>
+{% else %}
+<p>无相关故障原因</p>
+{% endif %}
+
 <!--	
 	{% for p in list2 %}
 			<li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ forloop.counter }}. 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>

@@ -13,10 +13,17 @@ def databrose(request):
 	})
 	return render(request,'modes/databrose.html',context)
 	
-def broseall(request):
+def broseallmode(request):
 	FaultMode_list = FaultMode.objects.order_by('FaultModeID')
 	context = Context({
                'FaultMode_list': FaultMode_list,
+	})
+	return render(request,'modes/broseall.html',context)
+	
+def broseallcause(request):
+	FaultCause_list = FaultCause.objects.order_by('FaultCauseID')
+	context = Context({
+               'FaultCause_list': FaultCause_list,
 	})
 	return render(request,'modes/broseall.html',context)
 	
@@ -37,9 +44,14 @@ def dgdetail(request,mode_id):
 #	list2 = FaultMode.objects.filter( HighLevelFaultModeID = mode_id)
 	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = mode_id)
 	list1=list0.values_list('FaultModeID')
-	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
+	SonFaultMode = FaultMode.objects.filter(FaultModeID__in= list1)
+	
+	list0 = FaultCauseRelation.objects.filter( FaultModeID = mode_id)
+	list1 = list0.values_list('FaultCauseID')
+	SonFaultCause = FaultCause.objects.filter(FaultCauseID__in= list1) 
+	
 	context = Context({
-               'FaultModeID':mode_id,'ChosenFaultMode':ChosenFaultMode,'list2':list2
+               'FaultModeID':mode_id,'ChosenFaultMode':ChosenFaultMode,'SonFaultMode':SonFaultMode,'SonFaultCause':SonFaultCause,
 	})
 
 	return render(request,'details/dgdetails.html',context)
@@ -68,6 +80,7 @@ def diagnose(request):
 	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = 0)
 	list1=list0.values_list('FaultModeID')
 	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
+	
 	context = Context({
                'HighLevelFaultMode_list': list2, 'FaultMode_list': FaultMode_list,
 	})

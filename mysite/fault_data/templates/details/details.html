@@ -101,13 +101,11 @@
 	<tr>
 		<th>故障号</th>
 		<th>故障</th>
-		<th>检测信息</th>
 	</tr>
 		{% for p in list2 %}
 			<tr>
 				<td> 第{{p.FaultModeID}}号故障</td>
 				<td><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ p.FaultMode }}</a></td>
-				<td><a href="/fault_data/dfunction/{{ p.FunctionID }}/">检测信息： 第{{p.FaultModeID}}号故障存在自动检测方法，点击进行诊断</a></td>
 			</tr>
 			
 			
