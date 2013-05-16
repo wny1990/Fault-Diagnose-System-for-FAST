@@ -1,4 +1,5 @@
-<head>
+<!--
+	<head>
 	<link rel = "stylesheet" type = "text/css" href = "/media/css/main.css">
 
 </head>
@@ -30,8 +31,123 @@
 	</div>
 
 	<div id="footer"> University of Science and Technology of China</div>
-
-
-
-
 </body>
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}  FAST故障诊断系统 {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/media/bootstrap/css/bootstrap.min.css"  rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+    <link href="/media/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	 <link href="/media/bootstrap//css/docs.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.bootcss.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+   
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Web Based Fault Diagnose System</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+             
+             {% block  tab %}
+              <li class="active"><a href="/">主页</a></li>
+              <li><a href="/test">关于本站</a></li>
+              <li><a href="mailto:nek@ustc.edu.cn">联系</a></li>
+				{% endblock %}
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>FAST故障诊断系统</h1>
+    <p class="lead">Web based fault diagnose system for FAST</p>
+  </div>
+</header>
+
+<p></p>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-pills  nav-stacked">
+              <li class="nav-header">导航</li>
+				
+					<li> <a href="/"><h5>主页 &raquo </h5></a></li> 
+					<li><a href="/fault_data/" ><h5>数据浏览 &raquo </h5></a></li>
+					<li><a href="/fault_data/diagnose/"><h5>故障诊断 &raquo </h5></a></li>
+					<li><a href="/fault_data/manage/"><h5> 数据管理 &raquo </h5> </a></li>
+					<li><a href="/fault_data/syslog/"><h5>系统日志 &raquo </h5></a></li>
+					<li><a href="/test"><h5>关于本站 &raquo </h5></a></li>
+					<li><a href="/bttest"><h5>Bootstrap测试 &raquo </h5> </a></li>
+					{% block mymenu %} {% endblock%}
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="hero-unit">
+							
+							{% block mycontent %}{% endblock %}
+          </div>
+          
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>University of Science and Technology of China 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../media/bootstrap/css/bootstrap.min.css" ></script>
+    <script src="../media/bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

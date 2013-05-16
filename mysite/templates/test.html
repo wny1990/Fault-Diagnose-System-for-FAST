@@ -1,6 +1,12 @@
 {% extends "frame.html" %}
+ 
+ {% block  tab %}
+              <li><a href="/">主页</a></li>
+              <li class="active"><a href="/test">关于本站</a></li>
+              <li><a href="mailto:nek@ustc.edu.cn">联系</a></li>
+ {% endblock %}
 
-{% block content %}
+{% block mycontent %}
 
 
 	<h2>测试用页面:</h2>

@@ -1,6 +1,7 @@
 {% extends "frame.html" %}
 
-{% block content %}
+
+{% block mycontent %}
 <h2>数据浏览:</h2>
 <br>
 <p><b>1. 高层故障模式列表:</b></p>
@@ -18,11 +19,11 @@
 <p><b>2. 故障模式一览表:</b></p>
 
 <ul>
-<li><a href="/fault_data/all_mode/"> 故障模式一览表</a></li>
+<li><a button class="btn btn-primary" type="button" href="/fault_data/all_mode/"> 故障模式一览表</a></li>
 </ul>
 
 <p><b>3. 故障原因一览表:</b></p>
 <ul>
-<li><a href="/fault_data/all_cause/"> 故障原因一览表</a></li>
+<li><a button class="btn btn-primary" type="button" href="/fault_data/all_cause/"> 故障原因一览表</a></li>
 </ul>
 {% endblock %}
