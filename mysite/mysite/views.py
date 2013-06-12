@@ -8,12 +8,10 @@ def homepage_view(request):
 
 	return render(request,'homepage.html')
 	
-def test_view(request):
-	now = datetime.datetime.now()
-	context = Context({
-               'now': now,
-	})
-	return render(request,'test.html',context)
-def bttest_view(request):
+def about_site_view(request):
 
-	return render(request,'test1.html')
+	return render(request,'about_site.html')
+	
+def test_view(request):
+
+	return render(request,'test.html')

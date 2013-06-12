@@ -1,0 +1,29 @@
+{% extends "frame.html" %}
+ 
+ {% block  tab %}
+              <li><a href="/">主页</a></li>
+              <li class="active"><a href="/test">关于本站</a></li>
+              <li><a href="mailto:nek@ustc.edu.cn">联系</a></li>
+ {% endblock %}
+
+{% block mycontent %}
+
+
+	<h2>测试用页面:</h2>
+
+	<p>
+		{{ now }}
+	</p>
+	
+	<p> <b>图片显示示例：</b></p>
+	<p>
+	<img src="/media/test.jpg" width="100" height="100">
+	</p>
+	<p> <b>文字显示示例：</b></p>
+	<p>
+		{% load webdesign %}
+		{% lorem %}
+	</p>
+	<p><b> CSS按钮显示示例：</b></p>
+
+{% endblock %}

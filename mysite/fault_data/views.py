@@ -4,30 +4,30 @@ from django.shortcuts import render_to_response
 from django.template import Context, loader
 from fault_data.models import *
 
-def databrose(request):
+def data_browse(request):
 	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = 0)
 	list1=list0.values_list('FaultModeID')
 	list2 = FaultMode.objects.filter(FaultModeID__in= list1) 
 	context = Context({
                'HighLevelFaultMode_list': list2,
 	})
-	return render(request,'modes/databrose.html',context)
+	return render(request,'modes/databrowse.html',context)
 	
-def broseallmode(request):
+def browse_all_mode(request):
 	FaultMode_list = FaultMode.objects.order_by('FaultModeID')
 	context = Context({
                'FaultMode_list': FaultMode_list,
 	})
-	return render(request,'modes/broseall.html',context)
+	return render(request,'modes/browseall.html',context)
 	
-def broseallcause(request):
+def browse_all_cause(request):
 	FaultCause_list = FaultCause.objects.order_by('FaultCauseID')
 	context = Context({
                'FaultCause_list': FaultCause_list,
 	})
-	return render(request,'modes/broseall.html',context)
+	return render(request,'modes/browseall.html',context)
 	
-def detail(request,mode_id):
+def mode_detail(request,mode_id):
 	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)
 	list0 = FaultModeRelation.objects.filter( HighLevelFaultModeID = mode_id)
 	list1=list0.values_list('FaultModeID')
@@ -36,8 +36,16 @@ def detail(request,mode_id):
                'FaultModeID':mode_id,'ChosenFaultMode':ChosenFaultMode,'list2':list2
 	})
 
-	return render(request,'details/details.html',context)
+	return render(request,'details/mode_details.html',context)
+	
+def cause_detail(request,cause_id):
+	ChosenFaultCause = FaultCause.objects.filter(FaultCauseID = cause_id)
+	context = Context({
+               'FaultCauseID':cause_id,'ChosenFaultCause':ChosenFaultCause,
+	})
 
+	return render(request,'details/cause_details.html',context)
+	
 def dgdetail(request,mode_id):
 	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)
 #	list2 = FaultMode.objects.filter( HighLevelFaultModeID = mode_id)
@@ -91,12 +99,30 @@ def datamanage(request):
 def syslog(request):
 	return render(request,'syslog/syslog_main.html')
 	
-def managelist(request):
-	FaultMode_mlist = FaultMode.objects.order_by('FaultModeID')
+def manage_mode_list(request):
+	FaultMode_Manage_list = FaultMode.objects.order_by('FaultModeID')
 	context = Context({
-               'FaultMode_list': FaultMode_mlist,
+               'FaultMode_list': FaultMode_Manage_list,
 	})
-	return render(request,'manage/data_manage_list.html',context)
+	return render(request,'manage/manage_mode_list.html',context)
+	
+def manage_cause_list(request):
+	FaultCause_Manage_list = FaultCause.objects.order_by('FaultCauseID')
+	context = Context({
+               'FaultCause_list': FaultCause_Manage_list,
+	})
+	return render(request,'manage/manage_cause_list.html',context)
+
+def manage_relation_list(request):
+	ModeMode_Relation_list = FaultModeRelation.objects.order_by('FaultModeID')
+	ModeCause_Relation_list= FaultCauseRelation.objects.order_by('FaultModeID')
+	context = Context({
+               'ModeMode_Relation_list':ModeMode_Relation_list,'ModeCause_Relation_list':ModeCause_Relation_list,
+	})
+	return render(request,'manage/manage_relation_list.html',context)
+	
+
+	
 def dfunction(request,function_id):
 	infile = open("/proc/meminfo")
 	file_content = infile.read()
@@ -114,12 +140,15 @@ def delmode(request,mode_id):
 	})
 	return render(request,'manage/result.html',context)
 	
-def add_data(request):
+def add_mode_data(request):
+	return render(request,'manage/add_mode_data.html')
+	
+def add_cause_data(request):
 	mode_id=1
 	context = Context({
                'mode_id':mode_id,
 	})
-	return render(request,'manage/add_data.html',context)
+	return render(request,'manage/add_mode_data.html',context)
 
 def modifymode(request,mode_id):
 	ChosenFaultMode = FaultMode.objects.filter(FaultModeID = mode_id)

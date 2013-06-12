@@ -3,20 +3,20 @@
 {% block mycontent %}
 
 <h2>数据管理:</h2>
-<br>
-<a href="/fault_data/add_data/" button class="btn btn-primary" type="button">添加数据</a></button>
 <!-- <li><a href="/fault_data/addmode/">添加故障模式</a></li> -->
-<br><br>
-<a href="/fault_data/manage_list/" button class="btn btn-primary" type="button">数据列表及修改选项</a></button>
+<br>
+<a href="/fault_data/manage_mode_list/" button class="btn btn-primary" type="button">故障模式列表及修改选项</a></button>
+
+<br>
+<br>
+<a href="/fault_data/manage_cause_list/" button class="btn btn-primary" type="button">故障原因列表及修改选项</a></button>
+
+<br>
+<br>
+<a href="/fault_data/manage_relation_list/" button class="btn btn-primary" type="button">故障关系列表及修改选项</a></button>
 
 <br>
 <br>
 <!-- <li><a href="/fault_data/manage_list/">故障模式列表及修改选项</a></li> -->
-
-<li>搜索故障模式</li>
-<form action="/fault_data/manage_search/" method="get">
-    <input type="text" name="search_text"><br>
-    <input type="submit" value="提交 &raquo" class="large orange awesome"> 
-</form>
 
 {% endblock %}

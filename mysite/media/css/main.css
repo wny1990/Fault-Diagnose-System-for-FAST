@@ -1,4 +1,4 @@
-
+/*
 div#header {background-color:blue;color:white;}
 div#menu {background-color:#ffff99;height:120%;width:15%;float:left;}
 div#content {border-left:4px solid;border-left-style:ridge;border-left-color:BLUE;
@@ -47,3 +47,4 @@ li{list-style: square inside url("../arrow.gif");}
 	.orange.awesome:hover							{ background-color: #d45500; }
 	.yellow.awesome, .yellow.awesome:visited		{ background-color: #ffb515; }
 	.yellow.awesome:hover							{ background-color: #fc9200; }
+*/

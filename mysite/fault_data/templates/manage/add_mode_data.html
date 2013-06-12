@@ -1,23 +1,20 @@
 {% extends "frame.html" %}
 
-{% block myontent %}
-<h2>故障数据添加选项:</h2>
+{% block mycontent %}
+<h2>故障模式数据添加选项:</h2>
 <br>
 
        	<ul>
 		<li>添加故障模式</li>
 		<br>
 		添加为：
-		<form action="/fault_data/addattr/" method="get">
+		<form action="/fault_data/fault_mode/addattr/" method="get">
 		FaultModeID（故障原因ID)：
 		<input type="text" name="FaultModeID"><br>
 		FaultMode（故障模式）
 		<input type="text" name="FaultMode"><br>
 		FaultDescription（故障描述）
 		<input type="text" name="FaultDescription"><br>
-<!--		HighLevelFaultModeID（高层故障模式ID）
-		<input type="text" name="HighLevelFaultModeID"><br>
--->
 		DetectionMethod（故障模式检测方式）
 		<input type="text" name="DetectionMethod"><br>
 		ManualDetectionMethodID（手动检测方法ID:）

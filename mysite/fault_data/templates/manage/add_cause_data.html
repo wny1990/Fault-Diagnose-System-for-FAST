@@ -1,0 +1,32 @@
+{% extends "frame.html" %}
+
+{% block mycontent %}
+<h2>故障原因数据添加选项:</h2>
+<br>
+
+       	<ul>
+		<li>添加故障模式</li>
+		<br>
+		添加为：
+		<form action="/fault_data/addattr/" method="get">
+		FaultModeID（故障原因ID)：
+		<input type="text" name="FaultModeID"><br>
+		FaultMode（故障模式）
+		<input type="text" name="FaultMode"><br>
+		FaultDescription（故障描述）
+		<input type="text" name="FaultDescription"><br>
+		DetectionMethod（故障模式检测方式）
+		<input type="text" name="DetectionMethod"><br>
+		ManualDetectionMethodID（手动检测方法ID:）
+		<input type="text" name="ManualDetectionMethodID"><br>
+		FunctionID（相关函数ID）:
+		<input type="text" name="FunctionID"><br>
+		Priority（优先级）:
+		<input type="text" name="Priority"><br>
+		LogicalRelationship（逻辑关系：当前故障模式和其高层故障模式的关系（与、或））:
+		<input type="text" name="LogicalRelationship"><br>
+		<input type="submit" value="提交 &raquo" class="small orange awesome"> 
+		
+		</form>
+
+{% endblock %}

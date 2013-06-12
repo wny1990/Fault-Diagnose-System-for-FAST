@@ -1,12 +1,11 @@
 {% extends "frame.html" %}
 
 {% block mycontent %}
-
-<h2>故障模式细节:</h2>
+<h2>故障模式数据细节:</h2>
 <br>
-
 {% for p in ChosenFaultMode %}
-	<table border="2">
+
+<table border="2"
 	<tr>
 		<th>属性</th>
 		<th>解释</th>
@@ -28,11 +27,6 @@
 		<td><b>{{ p.FaultDescription }}</b></td>
 </tr>
 
-<tr>
-		<td>HighLevelFaultModeID</td>
-		<td>高层故障模式ID：故当前故障模式的父节点的ID</td>
-		<td><b>{{  p.HighLevelFaultModeID }}</b></td>
-</tr>
 <tr>
 		<td>DetectionMethod</td>
 		<td>故障模式检测方式：手动方式或通过状态来检测（0是自动检测，非零是手动检测）</td>
@@ -61,69 +55,27 @@
 </table>
  {% endfor %}
 
+
+{% if list2 %}   
 <h2>子故障模式:</h2>
-{% if SonFaultMode %}   
 	<br>
 	<table border="2">
 	<tr>
 		<th>故障号</th>
 		<th>故障</th>
-		<th>检测信息</th>
 	</tr>
-		{% for p in SonFaultMode %}
+		{% for p in list2 %}
 			<tr>
 				<td> 第{{p.FaultModeID}}号故障</td>
 				<td><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ p.FaultMode }}</a></td>
-				<td><a href="/fault_data/dfunction/{{ p.FunctionID }}/">检测信息： 第{{p.FaultModeID}}号故障存在自动检测方法，点击进行诊断</a></td>
 			</tr>
 			
 			
 	{% endfor %}
 		</table>
 {% else %}
-<b>无子故障模式</b>
+<h2>无子故障模式</h2>
 {% endif %}
 
-
-
-<br>
-<h2>与该故障模式相关的故障原因:</h2>
-
-{% if SonFaultCause %}   
-	<br>
-	<table border="2">
-	<tr>
-		<th>故障原因号</th>
-		<th>故障原因</th>
-		<th>故障原因描述</th>
-		<th>维修建议：</th>
-	</tr>
-		{% for p in SonFaultCause %}
-			<tr>
-				<td> 第{{p.FaultCauseID}}号故障原因</td>
-				<td>{{ p.FaultCause }}</td>
-				<td>{{ p.FaultCauseDescription }}</td>
-				<td>{{ p.MaintenanceSuggestions }}</td>
-			</tr>
-			
-		{% endfor %}
-		</table>
-{% else %}
-<p>无相关故障原因</p>
-{% endif %}
-
-<!--	
-	{% for p in list2 %}
-			<li><a href="/fault_data/diagnose/{{ p.FaultModeID }}/"> {{ forloop.counter }}. 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
-			{% if p.DetectionMethod%}
-				<a href="/fault_data/dfunction/{{ p.FunctionID }}/">检测信息： 第{{p.FaultModeID}}号故障存在自动检测方法，点击进行诊断</a>
-			{% else %}
-				无自动监测方法，请进行手动检测，相关信息如下：{{p.ManualDetectionMethodID}}
-			{% endif %}
-			<br><br>
-			
-	{% endfor %}
-	-->
 
 {% endblock %}
-

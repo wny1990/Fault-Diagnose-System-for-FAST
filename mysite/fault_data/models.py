@@ -6,7 +6,6 @@ class FaultMode(models.Model):
 	FaultModeID = models.IntegerField(editable=False, default=0)
 	FaultMode = models.CharField(max_length=200)
 	FaultDescription= models.CharField(max_length=200)
-#	HighLevelFaultModeID = models.CharField(max_length=15)
 	DetectionMethod = models.BooleanField()
 	ManualDetectionMethodID = models.CharField(max_length=15)
 	FunctionID = models.CharField(max_length=15)

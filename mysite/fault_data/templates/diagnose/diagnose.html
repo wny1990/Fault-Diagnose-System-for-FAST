@@ -28,19 +28,6 @@
 
 <br>
 <br>
-<!--
-<p><b>3. Input the FaultModeID you are searching for:</b></p>
 
-
-<form action="/fault_data/search/" method="get">
-{% csrf_token %}
-{% for choice in FaultMode_list %}
-    <input type="radio" name="search_text" id="choice{{ forloop.counter }}" value="{{ choice.FaultModeID }}" />
-    <label for="{{ forloop.counter }}">{{ choice.FaultMode }}</label><br />
-{% endfor %}
-
-<input type="submit" value="Submit &raquo" class="large orange awesome"> 
-</form>
--->
 
 {% endblock %}

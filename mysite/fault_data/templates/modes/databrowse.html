@@ -8,7 +8,7 @@
 {% if HighLevelFaultMode_list %}
     <ul>
     {% for p in HighLevelFaultMode_list %}
-			<li><a href="/fault_data/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
+			<li><a href="/fault_data/fault_mode/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障：{{ p.FaultMode }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

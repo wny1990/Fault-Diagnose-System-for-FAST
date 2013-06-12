@@ -1,0 +1,46 @@
+{% extends "frame.html" %}
+
+{% block mycontent %}
+<h2>故障关系数据管理:</h2>
+
+<br><br>
+
+
+<p><b>故障模式关系列表:</b></p>
+{% if ModeMode_Relation_list %}
+   <table border="2">
+    {% for p in ModeMode_Relation_list %}
+     <tr>   
+		<td> <a href="/fault_data/fault_mode/{{ p.FaultModeID }}/"> 子故障：第{{p.FaultModeID}}号故障模式</a></td>
+		<td> {{ p.FaultMode }} </td>
+       <td> <a href="/fault_data/fault_mode/{{ p.HighLevelFaultModeID }}/">父故障： 第{{p.HighLevelFaultModeID}}号故障模式</a></td>
+       <td> 故障逻辑关系：{{p.LogicalRelationship}}</td>
+       <td> <a href="/fault_data/mm_relation/del/{{ p.FaultModeID }}/{{ p.HighLevelFaultModeID }}/"> 删除该关系</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No ModeMode_Relation_list are available.</p>
+{% endif %}
+
+<br>
+
+<p><b>故障原因关系列表:</b></p>
+{% if ModeCause_Relation_list %}
+   <table border="2">
+    {% for p in ModeCause_Relation_list %}
+     <tr>   
+		<td> <a href="/fault_data/fault_mode/{{ p.FaultModeID }}/"> 故障模式：第{{p.FaultModeID}}号故障模式</a></td>
+		<td> {{ p.FaultMode }} </td>
+       <td> <a href="/fault_data/fault_cause/{{ p.FaultCauseID }}/">相关故障原因： 第{{p.FaultCauseID}}号故障原因</a></td>
+       <td> 故障逻辑关系：{{p.LogicalRelationship}}</td>
+       <td> <a href="/fault_data/mc_relation/del/{{ p.FaultModeID }}/{{ p.FaultCauseID }}/"> 删除该关系</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No ModeMode_Relation_list are available.</p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,51 +1,43 @@
 {% extends "frame.html" %}
- 
- {% block  tab %}
-              <li><a href="/">主页</a></li>
-              <li class="active"><a href="/test">关于本站</a></li>
-              <li><a href="mailto:nek@ustc.edu.cn">联系</a></li>
- {% endblock %}
+
 
 {% block mycontent %}
-
-
-	<h2>测试用页面:</h2>
-
-	<p>
-		{{ now }}
-	</p>
-	
-	<p> <b>图片显示示例：</b></p>
-	<p>
-	<img src="/media/test.jpg" width="100" height="100">
-	</p>
-	<p> <b>文字显示示例：</b></p>
-	<p>
-		{% load webdesign %}
-		{% lorem %}
-	</p>
-	<p><b> CSS按钮显示示例：</b></p>
-						<a class="large awesome">Super Awesome Button &raquo;</a> <br /><br />
-						<a class="large blue awesome">Awesome Blue Button &raquo;</a> <br /><br />
-						<a class="large magenta awesome">Awesome Magenta Button &raquo;</a> <br /><br />
-						<a class="large red awesome">Awesome Red Button &raquo;</a> <br /><br />
-						<a class="large orange awesome">Awesome Orange Button &raquo;</a> <br /><br />
-						<a class="large yellow awesome">Awesome Yellow Button &raquo;</a> <br /><br />
-
-			
-		<!--				
-						<a class="medium awesome">Super Awesome Button &raquo;</a> <br /><br />
-						<a class="medium blue awesome">Awesome Blue Button &raquo;</a> <br /><br />
-						<a class="medium magenta awesome">Awesome Magenta Button &raquo;</a> <br /><br />
-						<a class="medium red awesome">Awesome Red Button &raquo;</a> <br /><br />
-						<a class="medium orange awesome">Awesome Orange Button &raquo;</a> <br /><br />
-						<a class="medium yellow awesome">Awesome Yellow Button &raquo;</a>  <br /><br />
-						
-						<a class="small awesome">Super Awesome Button &raquo;</a> <br /><br />
-						<a class="small blue awesome">Awesome Blue Button &raquo;</a> <br /><br />
-						<a class="small magenta awesome">Awesome Magenta Button &raquo;</a> <br /><br />
-						<a class="small red awesome">Awesome Red Button &raquo;</a> <br /><br />
-						<a class="small orange awesome">Awesome Orange Button &raquo;</a> <br /><br />
-						<a class="small yellow awesome">Awesome Yellow Button &raquo;</a> 
-	-->
+<h1>Hello, world!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+          </div>
+          <div class="row-fluid">
+            <div class="span4">
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div><!--/span-->
+          </div><!--/row-->
+          <div class="row-fluid">
+            <div class="span4">
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn" href="#">View details &raquo;</a></p>
+            </div><!--/span-->
+          </div><!--/row-->
 {% endblock %}
