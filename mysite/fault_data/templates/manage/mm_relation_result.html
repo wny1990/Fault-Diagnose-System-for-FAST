@@ -1,0 +1,13 @@
+{% extends "frame.html" %}
+
+{% block mycontent %}
+<h2>数据管理:</h2>
+<br>
+<p><b>处理结果:</b></p>
+{% if action %}
+<p>已经成功<b>{{ action }} </b>联系父故障第<b> {{ mode_id2 }} </b>号模式，以及子故障第<b> {{ mode_id1 }} </b>号模式 之间的故障关系。</p>
+{% else %}
+{% endif %}
+
+
+{% endblock %}

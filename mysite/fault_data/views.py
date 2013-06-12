@@ -12,25 +12,30 @@ def add_mode_attr(request):
 	ManualDetectionMethodID = request.GET['ManualDetectionMethodID'] 
 	FunctionID = request.GET['FunctionID'] 
 	Priority = request.GET['Priority'] 
-	FaultDescription = request.GET['LogicalRelationship'] 
+	LogicalRelationship = request.GET['LogicalRelationship'] 
 	addattr=1
+	p=FaultMode(FaultModeID= aFaultModeID,FaultMode= aFaultmode,FaultDescription= aFaultDescription ,DetectionMethod=aDetectionMethod,ManualDetectionMethodID=aManualDetectionMethodID,FunctionID=aFunctionID,Priority=aPriority,LogicalRelationship=aLogicalRelationship)
+	p.save()
 	context = Context({
-               'addattr':addattr,'FaultModeID':FaultModeID,'FaultMode':FaultMode,'FaultDescription':FaultDescription,'HighLevelFaultModeID':HighLevelFaultModeID,
+			   'addattr':addattr,'FaultModeID':aFaultModeID,'FaultMode':aFaultMode,'FaultDescription':aFaultDescription,'DetectionMethod':aDetectionMethod,'ManualDetectionMethodID':aManualDetectionMethodID,'FunctionID':aFunctionID,'Priority':aPriority,'LogicalRelationship':aLogicalRelationship,
 	})
 	return render(request,'manage/mode_result.html',context)
 	
-def add_mode_attr(request):
-	FaultModeID = request.GET['FaultModeID'] 
-	FaultMode = request.GET['FaultMode'] 
-	FaultDescription = request.GET['FaultDescription']
-	DetectionMethod = request.GET['DetectionMethod'] 
-	ManualDetectionMethodID = request.GET['ManualDetectionMethodID'] 
-	FunctionID = request.GET['FunctionID'] 
-	Priority = request.GET['Priority'] 
-	FaultDescription = request.GET['LogicalRelationship'] 
+def add_cause_attr(request):
+	aFaultCauseID = request.GET['FaultCauseID'] 
+	aFaultCause = request.GET['FaultCause'] 
+	aFaultCauseDescription = request.GET['FaultCauseDescription']
+	aDetectionMethod = request.GET['DetectionMethod'] 
+	aManualDetectionMethodID = request.GET['ManualDetectionMethodID'] 
+	aFunctionID = request.GET['FunctionID'] 
+	aPriority = request.GET['Priority'] 
+	aLogicalRelationship = request.GET['LogicalRelationship'] 
+	aMaintenanceSuggestions=request.GET['MaintenanceSuggestions']
 	addattr=1
+	p=FaultCause(FaultCauseID= aFaultCauseID,FaultCause= aFaultCause,FaultCauseDescription= aFaultCauseDescription ,DetectionMethod=aDetectionMethod,ManualDetectionMethodID=aManualDetectionMethodID,FunctionID=aFunctionID,Priority=aPriority,LogicalRelationship=aLogicalRelationship,MaintenanceSuggestions=aMaintenanceSuggestions)
+	p.save()
 	context = Context({
-               'addattr':addattr,'FaultModeID':FaultModeID,'FaultMode':FaultMode,'FaultDescription':FaultDescription,'HighLevelFaultModeID':HighLevelFaultModeID,
+			   'addattr':addattr,'FaultCauseID':aFaultCauseID,'FaultCause':aFaultCause,'FaultCauseDescription':aFaultCauseDescription,'DetectionMethod':aDetectionMethod,'ManualDetectionMethodID':aManualDetectionMethodID,'FunctionID':aFunctionID,'Priority':aPriority,'LogicalRelationship':aLogicalRelationship,'MaintenanceSuggestions':aMaintenanceSuggestions,
 	})
 	return render(request,'manage/cause_result.html',context)
 
@@ -135,7 +140,23 @@ def delcause(request,cause_id):
                'cause_id':cause_id,'action':action
 	})
 	return render(request,'manage/cause_result.html',context)
+	
+def del_mm_relation(request,mode_id1,mode_id2):
+	action= "Delete"
+	FaultModeRelation.objects.filter(HighLevelFaultModeID = mode_id2 , FaultModeID = mode_id1).delete()
+	context = Context({
+               'mode_id1':mode_id1,'action':action,'mode_id2':mode_id2,
+	})
+	return render(request,'manage/mm_relation_result.html',context)
 
+def del_mc_relation(request,mode_id,cause_id):
+	action= "Delete"
+	FaultCauseRelation.objects.filter(FaultCauseID = cause_id, FaultModeID = mode_id).delete()
+	context = Context({
+               'mode_id':mode_id,'cause_id':cause_id,'action':action,
+	})
+	return render(request,'manage/mc_relation_result.html',context)
+	
 def mode_detailmodify(request,mode_id,attr):
 	search_text = request.GET['search_text'] 
 	if attr == 'FaultMode':

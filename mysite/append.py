@@ -17,10 +17,6 @@ from fault_data.models import *
 
 #python manage.py syncdb
 
-#我是分割线
-
-#FaultMode.objects.all().delete()
-
 
 #故障原因 开始
 p=FaultCause(FaultCauseID=1,FaultCause="运行参数错误",FaultCauseDescription="test",DetectionMethod=1,ManualDetectionMethodID="test",FunctionID="test",Priority=1,LogicalRelationship=0,MaintenanceSuggestions="重新发送正确参数")
