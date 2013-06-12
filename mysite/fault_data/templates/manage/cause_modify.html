@@ -1,0 +1,95 @@
+{% extends "frame.html" %}
+
+{% block mycontent %}
+<h2>故障数据细节及修改选项:</h2>
+<br>
+ {% for p in ChosenFaultCause %}
+       	<ul>
+		<li>FaultCauseID（故障原因ID): 	<b>{{ p.FaultCauseID }}</b></li>
+		解释：故障原因的ID号
+		<br><br>
+		
+		<li>FaultCause（故障原因）: <b>{{ p.FaultCause }}</b></li>
+		解释：故障原因或故障原因，即故障树中的节点名称
+			<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/FaultCause" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+		</form>
+		
+		<li>FaultCauseDescription（故障描述）: <b>{{ p.FaultCauseDescription }}</b></li>
+		解释：对于故障原因的具体描述
+			<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/FaultCauseDescription" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+		</form>
+		
+		
+		<li>DetectionMethod（故障原因检测方式）: <b>{{ p.DetectionMethod }}</b></li>
+		解释：故障原因检测方式：手动方式或通过状态来检测（0是自动检测，非零是手动检测）
+			<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/DetectionMethod" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+		</form>
+		
+		
+		<li>ManualDetectionMethodID（手动检测方法ID）: <b>{{ p.ManualDetectionMethodID }}</b></li>
+		解释：手动检测方法ID 
+			<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/MaunualDetectionMethodID" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+		</form>
+		
+		
+		<li>FunctionID（相关函数ID）: <b>{{ p.FunctionID }}</b></li>
+		解释：相关函数ID
+			<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/FunctionID" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+		</form>
+		
+		
+		<li>Priority（优先级）: <b>{{ p.Priority }}</b></li>
+		解释：优先级
+			<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/Priority" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+		</form>
+		
+		
+		<li>LogicalRelationship（逻辑关系：当前故障原因和其高层故障原因的关系（与、或））: <b>{{ p.LogicalRelationship }}</b></li>
+    	解释：逻辑关系：当前故障原因和其高层故障原因的关系（与、或）
+    		<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/LogicalRelationship" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+	
+		<li>MaintenanceSuggestions(维修建议）: <b>{{ p.MaintenanceSuggestions }}</b></li>
+		解释：维修建议
+			<br>
+		修改为：
+		<form action="/fault_data/fault_cause/modify/{{ p.FaultCauseID }}/MaintenanceSuggestions" method="get">
+		<input type="text" name="search_text"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
+		</form>
+	
+	
+	
+		</form>
+    	</ul>
+   {% endfor %}
+
+
+{% endblock %}

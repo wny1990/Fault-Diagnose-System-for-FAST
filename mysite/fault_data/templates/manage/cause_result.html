@@ -1,0 +1,27 @@
+{% extends "frame.html" %}
+
+{% block mycontent %}
+<h2>数据管理:</h2>
+<br>
+<p><b>处理结果:</b></p>
+{% if action %}
+<p>已经成功<b>{{ action }} </b>第  <b> {{ cause_id }} </b>号故障模式。</p>
+{% else %}
+{% endif %}
+
+{% if addattr %}
+<p>已经成功添加故障原因</p>
+<p>FaultModeID: {{ FaultCauseID }}</p>
+<p>FaultMode: {{ FaultCause }}</p>
+<p>FaultDescription: {{ FaultCauseDescription }}</p>
+<p>HighLevelFaultModeID:{{ HighLevelFaultModeID }}</p>
+{% else %}
+{% endif %}
+
+
+{% if modify_text %}
+<p>已经成功将ID为<b>{{ cause_id }}</b>的故障原因的属性<b>{{ attr }}</b>修改为<b>{{ modify_text }}</b>。</p>
+{% else %}
+{% endif %}
+
+{% endblock %}

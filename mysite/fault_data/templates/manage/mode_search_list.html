@@ -1,25 +1,14 @@
 {% extends "frame.html" %}
 
 {% block mycontent %}
-<h2>故障模式数据管理:</h2>
-<br>
 <br>
 
-
-<a href="/fault_data/add_mode_data/" button class="btn btn-primary" type="button">添加故障模式</a></button>
-
-<br><br>
-
-<li>搜索故障模式</li>
-<form action="/fault_data/fault_mode/manage_search/" method="get">
-    <input type="text" name="search_text"><br>
-    <input type="submit" value="提交 &raquo" class="large orange awesome"> 
-</form>
-
-<p><b>故障模式列表:</b></p>
-{% if FaultMode_list %}
+<h2>搜索结果:</h2>
+<br>
+<br>
+{% if search_list %}
    <table border="2">
-    {% for p in FaultMode_list %}
+    {% for p in search_list %}
      <tr>   
 		<td> <a href="/fault_data/fault_mode/{{ p.FaultModeID }}/"> 第{{p.FaultModeID}}号故障</a>:</td>
 		<td> {{ p.FaultMode }} </td>
@@ -29,7 +18,10 @@
     {% endfor %}
     </table>
 {% else %}
-    <p>No Search Result are available.</p>
+    <p>No search resualt are available.</p>
 {% endif %}
+
+
+
 
 {% endblock %}

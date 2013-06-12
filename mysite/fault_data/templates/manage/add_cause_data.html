@@ -5,17 +5,17 @@
 <br>
 
        	<ul>
-		<li>添加故障模式</li>
+		<li>添加故障原因</li>
 		<br>
 		添加为：
-		<form action="/fault_data/addattr/" method="get">
-		FaultModeID（故障原因ID)：
-		<input type="text" name="FaultModeID"><br>
-		FaultMode（故障模式）
-		<input type="text" name="FaultMode"><br>
-		FaultDescription（故障描述）
-		<input type="text" name="FaultDescription"><br>
-		DetectionMethod（故障模式检测方式）
+		<form action="/fault_data/fault_cause/addattr/" method="get">
+		FaultCauseID（故障原因ID)：
+		<input type="text" name="FaultCauseID"><br>
+		FaultCause（故障原因）
+		<input type="text" name="FaultCause"><br>
+		FaultCauseDescription（故障原因描述）
+		<input type="text" name="FaultCauseDescription"><br>
+		DetectionMethod（故障原因检测方式）
 		<input type="text" name="DetectionMethod"><br>
 		ManualDetectionMethodID（手动检测方法ID:）
 		<input type="text" name="ManualDetectionMethodID"><br>
@@ -23,9 +23,11 @@
 		<input type="text" name="FunctionID"><br>
 		Priority（优先级）:
 		<input type="text" name="Priority"><br>
-		LogicalRelationship（逻辑关系：当前故障模式和其高层故障模式的关系（与、或））:
+		LogicalRelationship（逻辑关系：当前故障原因和其高层故障模式的关系（与、或））:
 		<input type="text" name="LogicalRelationship"><br>
-		<input type="submit" value="提交 &raquo" class="small orange awesome"> 
+		MaintenanceSuggustions(维修建议)
+		<input type="text" name="MaintenanceSuggustions"><br>
+		<input type="submit" value="提交 &raquo" button class="btn btn-primary"> 
 		
 		</form>
 
